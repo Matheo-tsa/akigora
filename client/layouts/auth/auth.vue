@@ -1,11 +1,13 @@
 <template>
   <div>
-    <v-container> Page d'accueil </v-container>
+    <nuxt />
   </div>
 </template>
 
 <script>
 export default {
-  components: {},
+  name: 'Auth',
 }
 </script>
+
+<style scoped></style>

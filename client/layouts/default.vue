@@ -1,91 +1,119 @@
 <template>
-  <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="clipped = !clipped">
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
-    </v-app-bar>
-    <v-main>
-      <v-container>
-        <nuxt />
-      </v-container>
-    </v-main>
-    <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light> mdi-repeat </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer :absolute="!fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
-  </v-app>
+  <div>
+    <v-app>
+      <v-card height="60" width="256">
+        <v-navigation-drawer fixed app permanent>
+          <v-img max-width="200" src="https://picsum.photos/id/11/500/300">
+          </v-img>
+
+          <v-list dense nav>
+            <v-list-item
+              v-for="item in items"
+              :key="item.title"
+              link
+              :to="item.link"
+            >
+              <v-list-item-icon>
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-item-icon>
+
+              <v-list-item-content>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-navigation-drawer>
+      </v-card>
+
+      <div>
+        <v-app-bar fixed flat color="#f4f5f7">
+          <v-spacer> </v-spacer>
+
+          <v-btn icon>
+            <v-icon>mdi-magnify</v-icon>
+          </v-btn>
+
+          <v-menu left bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn icon v-bind="attrs" v-on="on">
+                <v-icon>mdi-bell-outline</v-icon>
+              </v-btn>
+            </template>
+
+            <v-list>
+              <v-list-item v-for="n in 5" :key="n" @click="() => {}">
+                <v-list-item-title>Option {{ n }}</v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+
+          <v-badge
+            bordered
+            bottom
+            color="deep-purple"
+            dot
+            offset-x="10"
+            offset-y="10"
+          >
+            <v-avatar size="40">
+              <v-img src="https://cdn.vuetifyjs.com/images/lists/2.jpg"></v-img>
+            </v-avatar>
+          </v-badge>
+
+          <v-title> Bonjour, [Nom de l'utilisateur]</v-title>
+        </v-app-bar>
+      </div>
+      <div>
+        <v-content>
+          <nuxt />
+        </v-content>
+      </div>
+    </v-app>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
       items: [
+        { title: 'Dashboard', icon: 'mdi-view-dashboard', link: '/' },
+        { title: 'Messages', icon: 'mdi-message', link: '/messages' },
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/',
+          title: 'Mes experts',
+          icon: 'mdi-account-group',
+          link: '/experts',
+        },
+        { title: 'Agenda', icon: 'mdi-calendar', link: '/agenda' },
+        {
+          title: 'Annonces',
+          icon: 'mdi-text-box-check-outline',
+          link: '/annonces',
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire',
+          title: 'Factures',
+          icon: 'mdi-file-table',
+          link: '/factures',
+        },
+        {
+          title: 'Mes statistiques',
+          icon: 'mdi-chart-box',
+          link: '/statistiques',
+        },
+        {
+          title: 'Recherche intervenants',
+          icon: 'mdi-magnify',
+          link: '/recherche',
         },
       ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js',
+      right: null,
     }
   },
 }
 </script>
+
+<style scoped>
+.v-application {
+  background-color: #f4f5f7;
+}
+</style>

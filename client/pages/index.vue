@@ -1,8 +1,6 @@
 <template>
   <div>
-    <v-container color="red">
-      teseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeet
-    </v-container>
+    <v-container> Page d'accueil </v-container>
   </div>
 </template>
 

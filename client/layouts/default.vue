@@ -3,8 +3,7 @@
     <v-app>
       <v-card height="60" width="256">
         <v-navigation-drawer fixed app permanent>
-          <v-img max-width="200" src="https://picsum.photos/id/11/500/300">
-          </v-img>
+          <img src="@/assets/logo-akigora.png" alt="akigora-logo" />
 
           <v-list dense nav>
             <v-list-item

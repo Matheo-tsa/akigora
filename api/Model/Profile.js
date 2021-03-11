@@ -1,19 +1,18 @@
-import mongoose from 'mongoose';
+const mongoose = require("mongoose");
 
 const ProfileModel = mongoose.Schema({
-    type : String,
-    userId : String,
-    timestamps : {createdAt : 'created_at', updatedAt:'updated_at'},
-    temporaryInvisible: Boolean,
-    domains:String,
-    title: String,
-    location: String,
-    descripton:String,
-    mission:String,
-    mainSkills:String,
-    languages:String,
-    tools:String,
-    experiences:
+  type: String,
+  userId: String,
 
+  temporaryInvisible: Boolean,
+  domains: String,
+  title: String,
+  location: String,
+  descripton: String,
+  mission: String,
+  mainSkills: String,
+  languages: String,
+  tools: String,
+});
 
-})
+module.exports = mongoose.model("Profile", ProfileModel);

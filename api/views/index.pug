@@ -32,5 +32,16 @@ form(method="POST" action="/user/register")
   label(for="inputNationality") Votre nationalité
   input(type='text' name="nationality" id="inputNationality")
   label(for="inputResidence") Votre pays de résidence
-  input(type="text" name="residence" id="inputResidence") 
+  input(type="text" name="residence" id="inputResidence")
+  label(for="inputType") Quel typoe d'utilisateur voulez vous etre ? 
+  select(name="type" id="inputType") 
+    option(value="expert") Expert
+    option(valuer="school") École
   input(type="submit" value="inscription") 
+
+
+
+form(method='get' action='/user/login')
+  label(for="loginMail") connectez-vous 
+  input(type="text" name='email' id='loginMail')
+  input(type="submit" value="login") 

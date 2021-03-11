@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const ProfileModel = mongoose.Schema({
   type: String,
@@ -13,6 +13,6 @@ const ProfileModel = mongoose.Schema({
   mainSkills: String,
   languages: String,
   tools: String,
-});
+})
 
-module.exports = mongoose.model("Profile", ProfileModel);
+module.exports = mongoose.model('Profile', ProfileModel)

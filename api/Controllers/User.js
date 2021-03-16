@@ -3,7 +3,6 @@ const User = require('../Model/User')
 const Profile = require('../Model/Profile')
 exports.register = (req, res) => {
   bcrypt.hash(req.body.password, 10).then((hash) => {
-    console.log(hash)
     // on crée un instance d'utilisateur
     const newUser = new User({
       // on remplit l'instance avec les informations envoyées par la requete de l'internaute : req.body.nom_du_champ
@@ -40,21 +39,36 @@ exports.register = (req, res) => {
   })
 }
 exports.login = (req, res) => {
-  User.findOne({ email: req.body.email }).then((user) =>
-    console.log(user.firstName)
+  User.findOne({ email: req.body.email })
+    .then((user) => {
+      if (!user) {
+        return res.status(401).json({ error: 'Utilisateur non trouvé !' })
+      }
+      bcrypt
+        .compare(req.body.password, user.password)
+        .then((valid) => {
+          if (!valid) {
+            return res.status(401).json({ error: 'Mot de passe incorrect !' })
+          }
+          res.status(200).json({
+            userId: user._id,
+            token: 'TOKEN',
+          })
+        })
+        .catch((error) => res.status(500).json({ error }))
+    })
+    .catch((error) => res.status(500).json({ error }))
+}
+exports.put = (req, res) => {
+  User.updateOne(
+    { _id: req.params.id },
+    { ...req.body, _id: req.params.id }
+  ).then(() =>
+    res.status(200).json({ message: 'Vos données ont été modifiées' })
   )
-  if (!user) {
-    return res
-      .status(401)
-      .json({ message: 'utilisateur non trouvée dans notre base de données' })
-  }
-  if (req.body.password != user.password) {
-    return res
-      .status(401)
-      .json({ message: 'utilisateur non trouvée dans notre base de données' })
-  }
-  res.status(200).json({
-    userId: user._id,
-    token: 'TOKEN',
-  })
+}
+exports.delete = (req, res) => {
+  User.deleteOne({ _id: req.params.id })
+    .then(() => res.status(200).json({ message: 'Utilisateur Supprimé' }))
+    .catch((error) => res.status(400).json({ error }))
 }

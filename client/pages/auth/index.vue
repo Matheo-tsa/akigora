@@ -1,36 +1,25 @@
 <template>
   <div>
     <v-app>
-      <v-container fluid>
-        <v-card>
-          <v-form v-model="valid">
-            <v-container>
-              <v-row>
-                <v-col cols="12" md="4">
-                  <v-text-field
-                    v-model="email"
-                    :rules="emailRules"
-                    label="E-mail"
-                    required
-                  ></v-text-field>
-                </v-col>
-
-                <v-col cols="12" md="4">
-                  <v-text-field
-                    v-model="password"
-                    label="Mot de passe"
-                    required
-                  ></v-text-field>
-                </v-col>
-              </v-row>
-
-              <v-btn color="success" class="mr-4" @click="validate">
-                Validate
-              </v-btn>
-            </v-container>
+      <v-row>
+        <v-col class="form-container">
+          <span>Connectez vous à votre compte avec vos identifiants</span>
+          <v-form>
+            <v-text-field label="Email" type="email" solo dense></v-text-field>
+            <v-text-field
+              label="Mot de passe"
+              type="password"
+              solo
+              dense
+            ></v-text-field>
+            <v-checkbox label="Se souvenir de moi"></v-checkbox>
+            <div class="submit-container">
+              <v-btn color="success"> Connexion </v-btn>
+              <a href="">Mot de passe oublié ?</a>
+            </div>
           </v-form>
-        </v-card>
-      </v-container>
+        </v-col>
+      </v-row>
     </v-app>
   </div>
 </template>
@@ -42,4 +31,15 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.submit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>

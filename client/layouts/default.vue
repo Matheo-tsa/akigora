@@ -59,7 +59,7 @@
             </v-avatar>
           </v-badge>
 
-          <v-title> Bonjour, [Nom de l'utilisateur]</v-title>
+          <span> Bonjour, [Nom de l'utilisateur]</span>
         </v-app-bar>
       </div>
       <div>

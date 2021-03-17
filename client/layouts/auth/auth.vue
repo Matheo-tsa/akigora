@@ -35,7 +35,7 @@
           <v-row align="center" justify="center">
             <div class="register">
               <span>Vous n'avez pas de compte ?</span>
-              <a href="">S'enregistrer</a>
+              <v-btn>S'enregistrer</v-btn>
             </div>
           </v-row>
         </v-col>

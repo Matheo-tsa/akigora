@@ -1,0 +1,38 @@
+{
+  "name": "akigorav2",
+  "version": "0.0.1",
+  "description": "Api du dashboard pour akigora",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "watch": "chokidar \"**/*.scss\" -c \"npm run build\" --initial",
+    "build": "node-sass ./src/scss/main.scss ./src/css/style.css --output-style expanded"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matheo-tsa/akigora.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Matheo-tsa/akigora/issues"
+  },
+  "homepage": "https://github.com/Matheo-tsa/akigora#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bootstrap": "^5.0.0-beta3",
+    "chokidar": "^3.5.1",
+    "chokidar-cli": "^2.1.0",
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.12.2",
+    "node-sass": "^5.0.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pug": "^3.0.2",
+    "socket.io": "^3.1.1"
+  }
+}

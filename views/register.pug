@@ -1,0 +1,37 @@
+extends layout
+block content
+  h1 Inscrivez-vous
+  form(method="POST" action="/user/register")
+    label( for="inputEmail" class="form-label") Adresse mail
+    input(type="email" name="email" id="inputEmail" class="form-control" required)
+
+    label(for="inputPassword" class="form-label") Votre mot de passe
+    input(type="password" name="password" id="inputPassword" class="form-control" required)
+
+    label(for="inputPhoneNumber" class="form-label") Votre numéro de téléphone
+    input(
+    type="text" 
+    name="phoneNumber" 
+    id="inputPhoneNumber"
+    class="form-control"
+    required
+    )
+    label(for="inputCivility" class="form-label") Civilité
+    select(name="civility" id="inputCivility" class="form-select") 
+      option(value="mr") Monsieur
+      option(value="mme") Madame
+    label(for="inputFirstName" class="form-label") Votre Prénom
+    input(type="text" name="firstName" id="inputFirstName" class="form-control" required)
+    label(for="inputLastName" class="form-label") Votre Nom
+    input(type="text" name="lastName" id="inputLastName" class="form-control" required)
+    label(for="inputDate" class="form-label") Votre date de naissance
+    input(type="date" name="birthDate" id="inputDate" class="form-control" required)
+    label(for="inputNationality" class="form-label") Votre nationalité
+    input(type='text' name="nationality" id="inputNationality" class="form-control" required)
+    label(for="inputResidence" class="form-label") Votre pays de résidence
+    input(type="text" name="residence" id="inputResidence" class="form-control" required)
+    label(for="inputType" class="form-label") Quel type d'utilisateur voulez vous etre ? 
+    select(name="type" id="inputType" class="form-select") 
+      option(value="expert") Expert
+      option(value="school") École
+    input(type="submit" value="inscription") 

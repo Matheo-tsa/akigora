@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const User = require("../Model/User");
 const Profile = require("../Model/Profile");
-const passport = require('passport')
+const passport = require("passport");
 exports.register = (req, res) => {
   const {
     email,
@@ -51,7 +51,7 @@ exports.register = (req, res) => {
       });
   });
 };
-exports.login = (req, res,next) => {
+exports.login = (req, res, next) => {
   passport.authenticate("local", {
     successRedirect: "/user/dashboard",
     failureRedirect: "/user/login",

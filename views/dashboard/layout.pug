@@ -5,7 +5,26 @@ html(lang="fr")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Dashboard
-    body.container
-    header 
-        a(href="/dashboard/logout") Se déconnecter
-    block content
+    body
+        .container-fluid
+            .row
+                .col-2
+                    ul(class='nav flex-column')
+                        li.nav-item
+                            a.nav-link DASHBOARD
+                        li.nav-item
+                            a.nav-link MESSAGES
+                        li.nav-item
+                            a.nav-link MES EXPERTS
+                        li.nav-item
+                            a.nav-link AGENDA
+                        li.nav-item
+                            a.nav-link ANNONCES
+                        li.nav-item
+                            a.nav-link FACTURES
+                        li.nav-item
+                            a.nav-link MES STATISTIQUES
+                        li.nav-item
+                            a.nav-link RECHERCHE INTERVENANT
+                .col
+                    block content
